@@ -39,14 +39,8 @@ public class FrontControllerServletV3 extends HttpServlet { //처음에 생성�
         }
         Map<String, String> paramMap = createParamMap(request); // 파라미터 가져옴
         ModelView mv = controller.process(paramMap); // 그 파라미터 맵으로 모델뷰 만듬
-        System.out.println("mv = " + mv);
-
         String viewName = mv.getViewName(); // 논리이름 : new-form ( 그논리이름으로 경로 반환해줌)
-        //여기서 문제임.----------------------------------------------------
-        System.out.println("viewName = " + viewName);
-
         MyView view = viewResolver(viewName); //뷰를 제대로 띄워줌
-        System.out.println("view.getview = " + view);
 
         view.render(mv.getModel(),request,response);
     }
